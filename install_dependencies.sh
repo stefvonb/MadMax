@@ -51,7 +51,7 @@ PYTHON_LIB_DIR=`find $EXEC_PREFIX/lib -name "python*"`
 echo export PATH=$EXEC_PREFIX/bin:\$PATH > env.sh
 echo export LD_LIBRARY_PATH=$EXEC_PREFIX/lib:\$LD_LIBRARY_PATH >> env.sh
 echo export DYLD_LIBRARY_PATH=$EXEC_PREFIX/lib:\$DYLD_LIBRARY_PATH >> env.sh
-echo export PYTHONPATH=$EXEC_PREFIX/$PYTHON_LIB_DIR/site-packages:\$PYTHONPATH >> env.sh
+echo export PYTHONPATH=$PYTHON_LIB_DIR/site-packages:\$PYTHONPATH >> env.sh
 
 echo
 echo Finished... to use the installed dependencies, please do the following:

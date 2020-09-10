@@ -82,7 +82,7 @@ class optimiser(nlopt.opt):
             super().__init__(int_id, dimension)
         except (MemoryError, StopIteration):
             raise NLOPTError("Did not understand algorithm name '{}'".format(algorithm))
-        except NotImplementedError:
+        except (NotImplementedError, TypeError):
             raise NLOPTError("Problem with inputs for optimiser, please check the number of dimensions")
         self.name = NLOPT_ALGORITHMS[int_id]['name']
         self.set_lower_bounds([0.0 for _ in range(dimension)])

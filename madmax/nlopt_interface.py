@@ -25,8 +25,8 @@ NLOPT_ALGORITHMS = {
     5:  {'name': "GN_DIRECT_L_RAND_NOSCAL", 'desc': "Unscaled Randomized DIRECT-L (global, no-derivative)"},
     6:  {'name': "GN_ORIG_DIRECT", 'desc': "Original DIRECT version (global, no-derivative)"},
     7:  {'name': "GN_ORIG_DIRECT_L", 'desc': "Original DIRECT-L version (global, no-derivative)"},
-    8:  {'name': "GD_STOGO", 'desc': "StoGO (NOT COMPILED)"},
-    9:  {'name': "GD_STOGO_RAND", 'desc': "StoGO randomized (NOT COMPILED)"},
+    8:  {'name': "GD_STOGO", 'desc': "StoGO (global, derivative-based)"},
+    9:  {'name': "GD_STOGO_RAND", 'desc': "StoGO with randomized search (global, derivative-based)"},
     10: {'name': "LD_LBFGS_NOCEDAL", 'desc': "original L-BFGS code by Nocedal et al. (NOT COMPILED)"},
     11: {'name': "LD_LBFGS", 'desc': "Limited-memory BFGS (L-BFGS) (local, derivative-based)"},
     12: {'name': "LN_PRAXIS", 'desc': "Principal-axis, praxis (local, no-derivative)"},
@@ -82,7 +82,7 @@ class optimiser(nlopt.opt):
             super().__init__(int_id, dimension)
         except (MemoryError, StopIteration):
             raise NLOPTError("Did not understand algorithm name '{}'".format(algorithm))
-        except NotImplementedError:
+        except (NotImplementedError, TypeError):
             raise NLOPTError("Problem with inputs for optimiser, please check the number of dimensions")
         self.name = NLOPT_ALGORITHMS[int_id]['name']
         self.set_lower_bounds([0.0 for _ in range(dimension)])

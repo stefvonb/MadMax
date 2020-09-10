@@ -161,20 +161,20 @@ class TestClasses(unittest.TestCase):
                 passed = True
         self.assertTrue(passed)
 
-#    def test_nlopt(self):
-#        for n, algorithm in nl.NLOPT_ALGORITHMS.items():
+    def test_nlopt(self):
+        for n, algorithm in nl.NLOPT_ALGORITHMS.items():
             # Initialise from integer
-#            opt_i = nl.optimiser(n, 4)
-#            self.assertTrue(opt_i.get_algorithm_name() == algorithm['desc'])
+            opt_i = nl.optimiser(n, 4)
+            self.assertTrue(opt_i.get_algorithm_name() == algorithm['desc'])
             # Initialise from string
-#            opt_s = nl.optimiser(algorithm['name'], 4)
-#            self.assertTrue(opt_s.get_algorithm() == n)
+            opt_s = nl.optimiser(algorithm['name'], 4)
+            self.assertTrue(opt_s.get_algorithm() == n)
         
         # Test for non-existant algorithms
-#        self.assertRaises(nl.NLOPTError, nl.optimiser, 45, 4)
-#        self.assertRaises(nl.NLOPTError, nl.optimiser, "Somebody once told me the world is gonna roll me", 4)
-#        self.assertRaises(nl.NLOPTError, nl.optimiser, 2.5, 4)
-#        self.assertRaises(nl.NLOPTError, nl.optimiser, 2, 4.5)
+        self.assertRaises(nl.NLOPTError, nl.optimiser, 45, 4)
+        self.assertRaises(nl.NLOPTError, nl.optimiser, "Somebody once told me the world is gonna roll me", 4)
+        self.assertRaises(nl.NLOPTError, nl.optimiser, 2.5, 4)
+        self.assertRaises(nl.NLOPTError, nl.optimiser, 2, 4.5)
 
 if __name__ == "__main__":
     unittest.main()

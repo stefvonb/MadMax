@@ -23,6 +23,8 @@ jobs:
         uses: jwlawson/actions-setup-cmake@v1.3
         with:
           cmake-version: '3.18.x'
+      - name: Use cmake
+        run: cmake --version
       - name: Restore program environment cache
         uses: actions/cache@v2
         id: cache-env

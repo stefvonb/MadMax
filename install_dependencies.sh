@@ -21,7 +21,7 @@ else
     cd $SCRIPTPATH
 fi
 
-if ! command -v cmake &> /dev/null || [ ! -d "$EXEC_PREFIX/CMake" ]; then
+if ! command -v cmake &> /dev/null; then
      cd $EXEC_PREFIX
      git clone https://github.com/Kitware/CMake.git    
      cd CMake
